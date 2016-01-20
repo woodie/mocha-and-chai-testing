@@ -34,11 +34,21 @@ var translate = function (str) {
   return out;
 }
 
+var babelFish = function (lexicon, blurb) {
+  return false;
+}
+
+var dumpProperties = function (obj) {
+  return false;
+};
+
 if (typeof module !== 'undefined') {
   module.exports = { 
     max: max,
     reverse: reverse,
     filterLongWords: filterLongWords,
-    translate: translate
+    translate: translate,
+    babelFish: babelFish,
+    dumpProperties: dumpProperties
   }
 }

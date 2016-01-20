@@ -71,8 +71,8 @@ describe('Examples', function () {
 // {"merry":"god", "christmas":"jul", "and":"och", "happy":"gott", "new":"nytt", "year":"år"}
 // and use it to translate a Christmas card from English into Swedish.
 
-  describe('rosetta()', function () {
-    xit('returns Swedish translation', function () {
+  describe('babelFish()', function () {
+    xit('returns translation using lexicon objext', function () {
     });
   });
 
