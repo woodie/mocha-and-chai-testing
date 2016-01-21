@@ -60,7 +60,7 @@ describe('Examples', function () {
 
   describe('translate()', function () {
     it('returns a string', function () {
-      expect(examples.translate("this is fun")).not.to.be.empty;
+      expect(typeof examples.translate("this is fun") === 'string').to.equal(true);
     });
     it('translates text into "rövarspråket"', function () {
       expect(examples.translate("this is fun")).to.equal("tothohisos isos fofunon");
@@ -72,17 +72,31 @@ describe('Examples', function () {
 // and use it to translate a Christmas card from English into Swedish.
 
   describe('babelFish()', function () {
-    xit('returns translation using lexicon objext', function () {
+    it('returns a string', function () {
+      expect(typeof examples.babelFish({}, "foobar") === 'string').to.equal(true);
+    });
+    it('returns translation using lexicon objext', function () {
+      var lib = {"merry":"god", "christmas":"jul", "and":"och",
+                 "happy":"gott", "new":"nytt", "year":"år"};
+      var en = "Merry Christmas and Happy New Year";
+      var sv = "God Jul och Gott Nytt År";
+      expect(examples.babelFish(lib, en)).to.equal(sv);
     });
   });
 
-// Write an Address class with these properties and methods:
-// - City
-// - State
-// - Zip
+// Write an Address class with these properties and methods: City, State, Zip
 
   describe('dumpProperties()', function () {
-    xit('returns object properties', function () {
+    it('returns no properties', function () {
+      var empty = {};
+      expect(examples.dumpProperties(empty)).to.be.empty;
+    });
+    it('returns all properties', function () {
+      var city = 'North Pole';
+      var state = 'Alaska';
+      var zip = 99705;
+      var santa = new examples.Address(city, state, zip);
+      expect(examples.dumpProperties(santa)).to.deep.equal(["city", "state", "zip"])
     });
   });
 

@@ -32,15 +32,41 @@ var translate = function (str) {
     }
   }
   return out;
-}
+};
 
 var babelFish = function (lexicon, blurb) {
-  return false;
-}
+  var out = [];
+  for (let word of blurb.split(/\W+/)) {
+    if (word.toLowerCase() in lexicon) {
+      var lower = lexicon[word.toLowerCase()]
+      if (word.charAt(0) === word.charAt(0).toUpperCase()) {
+        out.push(lower.charAt(0).toUpperCase() + lower.slice(1));
+      } else {
+        out.push(lower);
+      }
+    } else {
+      out.push(word);
+    }
+  }
+  return out.join(" ");
+};
 
 var dumpProperties = function (obj) {
-  return false;
+  var out = [];
+  for (let attr in obj) {
+    out.push(attr);
+  }
+  return out;
 };
+
+var Address = (function () {
+  function Address(city, state, zip) {
+    this.city = city;
+    this.state = state;
+    this.zip = zip;
+  }
+  return Address;
+})();
 
 if (typeof module !== 'undefined') {
   module.exports = { 
@@ -49,6 +75,7 @@ if (typeof module !== 'undefined') {
     filterLongWords: filterLongWords,
     translate: translate,
     babelFish: babelFish,
-    dumpProperties: dumpProperties
+    dumpProperties: dumpProperties,
+    Address: Address
   }
 }
